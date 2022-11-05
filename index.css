@@ -167,6 +167,11 @@ select {
     text-align: center;
     border: 5px solid limegreen;
     display: grid;
+    place-items: center;
+}
+
+.grid-container * {
+    max-width: 50ch;
 }
 
 @media (min-width: 45rem) {
@@ -268,6 +273,7 @@ select {
 /* -------------------------------------- */
 
 .large-button {
+    font-size:2rem;
     position: relative;
     padding: 0 2em;
     border-radius: 50%;
