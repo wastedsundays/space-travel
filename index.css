@@ -306,6 +306,17 @@ select {
     transform: scale(1.5);
 }
 
+/* primary header */
+
+.logo {
+    margin: 1.5rem clamp(1.5rem, 5vw, 3.5rem);
+}
+
+.primary-header {
+    justify-content: space-between;
+    align-items: center;
+}
+
 .primary-navigation {
     --underline-gap: 2rem;
     list-style: none;
@@ -313,6 +324,15 @@ select {
     margin: 0;
     background: hsl( var(--clr-white) / .05);
     backdrop-filter: blur(2rem)
+}
+
+.primary-navigation a {
+    text-decoration: none;
+}
+
+.primary-navigation a > span {
+    font-weight: 700;
+    margin-right: .5em;
 }
 
 .mobile-nav-toggle {
@@ -362,14 +382,6 @@ select {
 
 
 
-.primary-navigation a {
-    text-decoration: none;
-}
-
-.primary-navigation a > span {
-    font-weight: 700;
-    margin-right: .5em;
-}
 
 .underline-indicators > * {
     padding: var(--underline-gap, 1rem) 0;
