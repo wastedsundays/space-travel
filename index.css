@@ -168,6 +168,7 @@ select {
     border: 5px solid limegreen;
     display: grid;
     place-items: center;
+    padding-inline: 1rem;
 }
 
 .grid-container * {
@@ -190,6 +191,11 @@ select {
     .grid-container>*:last-child {
         grid-column: 3;
         outline: 1px solid yellow;
+    }
+
+    .grid-container--home {
+        padding-bottom: 6rem;
+        align-items: end;
     }
 }
 
