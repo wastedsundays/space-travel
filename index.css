@@ -480,6 +480,10 @@ body {
 }
 
 .destination {
+    background-image: url('./assets/crew/background-crew-mobile.jpg');
+}
+
+.crew {
     background-image: url('./assets/destination/background-destination-mobile.jpg');
 }
 
@@ -490,7 +494,13 @@ body {
     .destination {
         background-image: url('./assets/destination/background-destination-tablet.jpg');
     }
+
+    .crew {
+        background-image: url('./assets/crew/background-crew-tablet.jpg');
+    }
 }
+
+
 
 @media (min-width: 45rem) {
     .home {
@@ -499,7 +509,13 @@ body {
     .destination {
         background-image: url('./assets/destination/background-destination-desktop.jpg');
     }
+
+    .crew {
+        background-image: url('./assets/crew/background-crew-desktop.jpg');
+    }
 }
+
+
 
 
 /*------------------  */
@@ -557,6 +573,31 @@ body {
     font-size: 1.75rem;
 }
 
+/* crew layout */
+
+.grid-container--crew {
+    --flow-space: 2rem;
+    grid-template-areas: 
+        'title'
+        'image'
+        'tabs'
+        'content';
+}
+
+.grid-container--crew > img {
+    grid-area: image;
+    max-width: 60%;
+    border-bottom: 1px solid hsl( var(--clr-white) / .25);
+}
+
+.grid-container--crew > .dot-indicators {
+    grid-area: tabs;
+}
+
+.grid-container--crew > .crew-details {
+    grid-area: content;
+}
+
 @media (min-width: 35em) {
     .numbered-title {
         justify-self: start;
@@ -566,6 +607,17 @@ body {
     .destination-meta {
         flex-direction: row;
         justify-content: space-evenly;
+    }
+
+    .grid-container--crew {
+
+        padding-bottom: 0;
+
+        grid-template-areas:
+            'title'
+            'content'
+            'tabs'
+            'image';
     }
 }
 
@@ -602,13 +654,26 @@ body {
             '. image content .';
     }
 
-    .grid-container--destination > img {
+    .grid-container--destination > img,
+    .grid-container--crew > img {
         max-width: 90%;
     }
 
     .destination-meta {
         --gap: min(8vw, 3rem);
         justify-content: start;
+    }
+
+    .grid-container--crew {
+
+
+
+        justify-items: left;
+
+        grid-template-areas:
+            '. title image .'
+            '. content image .'
+            '. tabs image .';
     }
 }
 
