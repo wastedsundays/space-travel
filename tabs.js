@@ -15,20 +15,17 @@ function changeTabFocus(e) {
   
     if (e.keyCode === keydownLeft || e.keyCode === keydownRight) {
       tabs[tabFocus].setAttribute("tabindex", -1);
-      // tabs[tabFocus].setAttribute("aria-selected", "false");
-    }
-  
-    if (e.keyCode === keydownRight) {
-      tabFocus++;
-      if (tabFocus >= tabs.length) {
-          tabFocus = 0;
-      }
-    }
-  
-    if (e.keyCode === keydownLeft) {
-      tabFocus--;
-      if (tabFocus < 0) {
-          tabFocus = tabs.length -1;
+
+      if (e.keyCode === keydownRight) {
+        tabFocus++;
+        if (tabFocus >= tabs.length) {
+            tabFocus = 0;
+        }
+      } else if (e.keyCode === keydownLeft) {
+        tabFocus--;
+        if (tabFocus < 0) {
+            tabFocus = tabs.length -1;
+        }
       }
     }
   
@@ -46,21 +43,25 @@ function changeTabPanel(e) {
 // removes the aria selected from old active tab
     tabContainer.
         querySelector('[aria-selected="true"]').setAttribute("aria-selected", false);
+    targetTab.setAttribute("aria-selected", true);
 
-    targetTab.setAttribute("aria-selected", true)
+    //hide all the text, then show the target text
+    hideContent(mainContainer,'[role="tabpanel"]' ) ;
+    showContent(mainContainer, [`#${targetPanel}`]);
 
-// hides all and then reveals the chosen tab panel
-    mainContainer
-        .querySelectorAll('[role="tabpanel"]')
-        .forEach((panel) => panel.setAttribute("hidden", true));
-    
-    mainContainer.querySelector([`#${targetPanel}`]).removeAttribute('hidden');
-
-// hides all and then reveals the chosen tab image
-    mainContainer
-    .querySelectorAll('picture')
-    .forEach((picture) => picture.setAttribute("hidden", true));
-
-    mainContainer.querySelector([`#${targetImage}`]).removeAttribute('hidden');
+    // hide all images, then show the target image
+    hideContent(mainContainer, 'picture');
+    showContent(mainContainer, [`#${targetImage}`]);
 }
 
+function hideContent(parent, content) {
+    parent
+        .querySelectorAll(content)
+        .forEach((item) => item.setAttribute("hidden", true));
+}
+
+function showContent(parent, content) {
+    parent
+        .querySelector(content)
+        .removeAttribute('hidden');
+}
