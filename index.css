@@ -457,7 +457,8 @@ background-color: hsl( var(--clr-white) / 1);
     border-radius: 50%;
     aspect-ratio: 1;
     padding: .25em;
-    width: 30%;
+    margin: .2em;
+    width: 2.5rem;
     border: 1px solid hsl( var(--clr-white) / .25);
     background-color: hsl( var(--clr-dark));
     color: hsl( var(--clr-white) / .5);
@@ -496,6 +497,10 @@ body {
     background-image: url('./assets/crew/background-crew-mobile.jpg');
 }
 
+.technology {
+    background-image: url('./assets/technology/background-technology-mobile.jpg');
+}
+
 @media (min-width: 35rem) {
     .home {
         background-image: url('./assets/home/background-home-tablet.jpg');
@@ -506,6 +511,10 @@ body {
 
     .crew {
         background-image: url('./assets/crew/background-crew-tablet.jpg');
+    }
+
+    .technology {
+        background-image: url('./assets/technology/background-technology-tablet.jpg');
     }
 }
 
@@ -521,6 +530,10 @@ body {
 
     .crew {
         background-image: url('./assets/crew/background-crew-desktop.jpg');
+    }
+
+    .technology {
+        background-image: url('./assets/technology/background-technology-desktop.jpg');
     }
 }
 
@@ -612,6 +625,31 @@ body {
     color: hsl( var(--clr-white) / .5);
 }
 
+
+/* technology layout */
+
+.grid-container--technology {
+    --flow-space: 2rem;
+    grid-template-areas: 
+        'title'
+        'image'
+        'tabs'
+        'content';
+}
+
+.grid-container--technology > picture {
+    grid-area: image;
+
+}
+
+.grid-container--technology > .number-indicators {
+    grid-area: tabs;
+}
+
+.grid-container--technology > .technology-details {
+    grid-area: content;
+}
+
 @media (min-width: 35em) {
     .numbered-title {
         justify-self: start;
@@ -687,5 +725,26 @@ body {
         grid-column: span 2;
         align-self: end;
         max-width: 90%;
+    }
+
+    .grid-container--technology {
+        grid-template-columns: minmax(1rem, 1fr) 7rem minmax(0,33rem) minmax(0,20rem) minmax(1rem, 1fr);
+        grid-template-areas:
+            '. title title title .'
+            '. tabs content image image ';
+
+    }
+
+    .grid-container--technology > picture {
+        grid-area: image;
+        /* grid-column: span 2; */
+    }
+
+    .grid-container--technology .number-indicators {
+        grid-area: tabs;
+    }
+
+    .number-indicators > * {
+        width: 5rem;
     }
 }
