@@ -271,13 +271,19 @@ select {
 .large-button {
     font-size:2rem;
     position: relative;
-    padding: 0 2em;
+    padding: 0 1em;
     border-radius: 50%;
     z-index: 1;
     display: inline-grid;
     place-items: center;
     aspect-ratio: 1;
     text-decoration: none;
+}
+
+@media (min-width: 45rem) {
+    .large-button {
+        padding: 0 2em;
+    }
 }
 
 .large-button::after {
